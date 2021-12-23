@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\McsUnaApp.Business.Entities\McsUnaApp.Business.Entities.csproj" />
+    <ProjectReference Include="..\..\McsUnaApp.Data.Contracts\McsUnaApp.Data.Contracts.csproj" />
+    <ProjectReference Include="..\..\McsUnaApp.Data\McsUnaApp.Data.csproj" />
+    <ProjectReference Include="..\Client\McsUnaApp.Client.csproj" />
+    <ProjectReference Include="..\Shared\McsUnaApp.Shared.csproj" />
+  </ItemGroup>
+
+
+</Project>

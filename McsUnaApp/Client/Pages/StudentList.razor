@@ -1,0 +1,61 @@
+﻿@page "/students"
+
+<h3>Students Records</h3>
+<div style="float:right">
+    <EditForm Model="_filter" OnValidSubmit="OnSearch">
+        <InputText Id="Name" @bind-Value="_filter.Name"></InputText>
+        <button type="submit" class="btn btn-info">🔍 Search</button>
+    </EditForm>
+</div>
+
+@if (AllStudents == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table" style="line-height:1">
+        <thead>
+            <tr>
+                @*<th></th>*@
+                
+                <th>Name</th>
+                <th>Admission No</th>
+                <th>Father</th>
+                <th>Mother</th>
+                <th>Phone No.</th>
+                <th>Res. Type</th>
+                <th>Transport</th>
+                <th>DOB</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var std in AllStudents)
+            {
+            <tr>
+                
+                <td>@std.StudentName</td>
+                <td>@std.AdmissionNo</td>
+                <td>@std.FatherName</td>
+                <td>@std.MotherName</td>
+                <td>@std.PhoneNo</td>
+                <td>@std.ResidenceTypeText</td>
+                <td>@std.ModeOfTranspotText</td>
+
+                <td>@Convert.ToDateTime( std.DateOfBirth).ToString("dd/MMM/yyyy")</td>
+
+
+
+                <td>
+                    <a href="/addeditstudent/@std.StudentGuid" class="btn btn-secondary">Edit</a>
+                    <button @onclick="(()=>DeleateStudent(std.StudentGuid))" class="btn btn-warning">❌</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+<a href="addeditstudent" class="btn btn-dark table-btn quick-add-btn float-right" title="Add new Student">&nbsp;&nbsp;+&nbsp;&nbsp;</a>
